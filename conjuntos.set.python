@@ -1,0 +1,66 @@
+# TUTORIAL : CONJUNTOS (SET) EM PYTHON
+
+# Os conjuntos são estruturas de dados ideais para quando nós precisamos armazenar vários itens, mas não se importa com a ordem e não pode ter elementos repetidos.
+# CARACTERÍSTICAS PRINCIPAIS
+# Itens únicos: Duplicatas são removidas automaticamente.
+# Sem ordem: Os elementos não seguem uma ordem fixa nem usam índices para acesso rápido.
+# Mutáveis: Você pode adicionar ou remover itens, mas os elementos internos precisam ser de tipos imutáveis (como números, strings ou tuplas).
+# CRIANDO CONJUNTOS
+# Nós podemos criar um conjunto colocando os elementos entre chaves {} ou usando a função embutida set().
+# Atenção: Para criar um conjunto vazio, nós devemos obrigatoriamente usar set(). Se usar {} vazio, o Python criará um dicionário comum.
+# --- CÓDIGO ---
+# Criando com chaves
+meu_conjunto = {1, 2, 3, 4, 4, 4}
+print(meu_conjunto) # Saída: {1, 2, 3, 4} (duplicatas são removidas)
+
+# Criando um conjunto vazio
+# conjunto_vazio = set()
+# MODIFICANDO UM CONJUNTO
+# Como os conjuntos não possuem índices, nós não podemos acessar ou alterar um item pelo número da posição (como conjunto). Porém, podemos facilmente adicionar e remover itens usando os métodos apropriados:
+# .add(): Adiciona um elemento ao conjunto.
+# .remove(): Remove um elemento. Se o elemento não existir, gera um erro (KeyError).
+# .discard(): Remove um elemento. Se o elemento não existir, não faz nada (seguro contra erros).
+# --- CÓDIGO ---
+frutas = {"maçã", "banana"}
+frutas.add("laranja") # Adiciona 'laranja'
+frutas.discard("uva") # Não faz nada, pois 'uva' não existe no conjunto
+# EXEMPLOS PRÁTICOS DO DIA A DIA
+# Aqui estão listados algumas situações que acontecem com a gente, onde os conjuntos se destacam em relação a listas ou tuplas tradicionais.
+
+# Exemplo 1: Remoção Rápida de Duplicatas
+# Se você tem uma lista preenchida com dados repetidos e precisa tirar só os valores únicos, converter para set é a melhor alternativa.
+
+# --- CÓDIGO —
+
+lista_emails = ["ana@email.com", "pedro@email.com", "ana@email.com", "luis@email.com"]
+# Converte para set para remover duplicatas e depois volta para lista
+emails_unicos = list(set(lista_emails))
+print(emails_unicos)
+# Saída: ['pedro@email.com', 'luis@email.com', 'ana@email.com'] (a ordem pode variar)
+
+# Exemplo 2: Operações Matemáticas (União e Interseção)
+
+# Imagine que nós gerenciamos dois grupos de alunos e queremos descobrir de um jeito rápido quem está matriculado em ambos ou juntar os grupos sem duplicar os nomes.
+# --- CÓDIGO ---
+clube_desenho = {"Ana", "Carlos", "Beatriz", "Daniel"}
+clube_musica = {"Carlos", "Daniel", "Eva", "Fábio"}
+# 1. Quem está em AMBOS os clubes? (Interseção)
+ambos = clube_desenho.intersection(clube_musica) # ou: clube_desenho & clube_musica
+print("Estão em ambos:", ambos)
+# Saída: {'Carlos', 'Daniel'}
+# 2. Qual o total de alunos únicos nos clubes? (União)
+todos_alunos = clube_desenho.union(clube_musica) # ou: clube_desenho | clube_musica
+print("Total de alunos:", todos_alunos)
+# Saída: {'Ana', 'Carlos', 'Beatriz', 'Daniel', 'Eva', 'Fábio'}
+
+# Exemplo 3: Diferença entre Conjuntos
+
+# Muito útil para descobrir o que mudou em uma lista, itens obsoletos ou o que um grupo específico tem que o outro não possui.
+# --- CÓDIGO ---
+produtos_estoque_antigo = {"celular", "notebook", "tablet"}
+produtos_estoque_novo = {"celular", "notebook", "smartwatch"}
+# Quais produtos saíram de linha? (Estavam no antigo, mas não no novo)
+saimos_de_linha = produtos_estoque_antigo - produtos_estoque_novo
+print("Saíram de linha:", saimos_de_linha)
+# Saída: {'tablet'}
+
